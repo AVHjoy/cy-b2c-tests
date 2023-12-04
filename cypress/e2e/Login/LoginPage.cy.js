@@ -1,5 +1,5 @@
-const element = require('../../support/elements').ELEMENTS;
-
+const element = require('../../support/elements').ELEMENTSLOGIN;
+const element = require('../../support/elements').ELEMENTSPADRAO;
 
 class LoginPage {
 
@@ -28,7 +28,7 @@ class LoginPage {
                 cy.get(element.user).click().type('admin.usa')
                 break;
             case 'InfluencerFRA':
-                cy.get(element.user).click().type('####')
+                cy.get(element.user).click().type('Adirley_FRA')
                 break;
             case 'GestorFRA':
                 cy.get(element.user).click().type('equpeFrancaA2')
