@@ -56,14 +56,23 @@ class LoginPage {
             case 'FR':
             cy.get(elementLogin.optionFr).click()
             default:
-            cy.get(elementLogin.optionPt).click()
                 break;
         }
     }
-    verificarIdioma() {
-        cy.contains('Entrar');
+    verificarIdioma(idioma) {
+        switch (idioma) {
+            case 'PT':
+                cy.contains('Entrar')
+                break;
+            case 'EN': 
+            cy.contains('Log in')
+            break;
+            case 'FR':
+            cy.contains('Se connecter')
+            default:
+                break;
+        }
     }
-
 }
 
 export default new LoginPage();

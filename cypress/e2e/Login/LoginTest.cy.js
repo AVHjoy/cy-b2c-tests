@@ -10,6 +10,6 @@ describe('Fazer login', () => {
   it.only('Trocar idioma da página', () => {
     LoginPage.acessarLogin();
     LoginPage.trocarIdioma('PT');
-    LoginPage.verificarIdioma();
+    LoginPage.verificarIdioma('PT')
   });
 })
