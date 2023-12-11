@@ -4,19 +4,19 @@ import '../../support/commands';
 
 class LoginPage {
 
-   acessarLogin() {
+    acessarPaginaLogin() {
         cy.visit(element.baseURL + '/login')
     }
 
     preencherLogin(tipoUsuario) {
         switch(tipoUsuario) {
-            case 'InfluencerBR':
+            case 'InfluencerBRA':
                 cy.get(elementLogin.user).click().type('vinijr')
                 break;
-            case 'GestorBR':
+            case 'GestorBRA':
                 cy.get(elementLogin.user).click().type('george')
                 break;
-            case 'AdminBR':
+            case 'AdminBRA':
                 cy.get(elementLogin.user).click().type('admin')
                 break;    
             case 'InfluencerUSA':
@@ -42,28 +42,18 @@ class LoginPage {
     cy.get(elementLogin.senha).type(elementLogin.senhaPadrao)
     }
 
-    fazerLogin() {
+    realizarLogin() {
         cy.get(elementLogin.buttonEntrar).click()
+        cy.location().should((loc) => {
+            expect(loc.href).to.eq(element.baseURL + '/dashboard')
+          })
     }
 
-    trocarIdioma(idioma) {
-        cy.get(elementLogin.buttonIdioma).click()
-
-        switch (idioma) {
-            case 'PT':
-                cy.get(elementLogin.optionPt).click()
-                break;
-            case 'EN': 
-            cy.get(elementLogin.optionEn).click()
-                break;
-            case 'FR':
-            cy.get(elementLogin.optionFr).click()
-            default:
-                break;
-        }
+    validarTrocarIdioma(idioma) {
+    cy.trocarIdioma(idioma);
     }
 
-    verificarIdioma(idioma) {
+    validarIdioma(idioma) {
         switch (idioma) {
             case 'PT':
                 cy.contains('Entrar')
@@ -78,19 +68,20 @@ class LoginPage {
         }
     }
 
-    linkEsqueceuSenha() {
+    validarLinkEsqueceuSenha() {
         cy.contains(/Esqueceu sua senha?|Forgot your password?|Mot de passe oublié?/).click()
         cy.location().should((loc) => {
             expect(loc.href).to.eq(element.baseURL + '/forget-password')
           })
     }
 
-    verificaBotaoMostrarSenha() {
+    validarBotaoMostrarSenha() {
         cy.get(elementLogin.buttonMostrarEsconderPassword).click()
         cy.get(elementLogin.senha).should('have.attr', 'type', 'text');
 
     }
-    verificaBotaoEsconderSenha() {
+
+    validarBotaoEsconderSenha() {
         cy.get(elementLogin.buttonMostrarEsconderPassword).click()
         cy.get(elementLogin.senha).should('have.attr', 'type', 'password');
     }
