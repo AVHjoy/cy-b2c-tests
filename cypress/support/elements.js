@@ -13,7 +13,8 @@ export const ELEMENTSLOGIN = {
     user: '#user', 
     senha: '#password',
     senhaPadrao: '123456', 
-    buttonEntrar: '.relative > button'
+    buttonEntrar: '.relative > button',
+    buttonMostrarEsconderPassword: '.right-0 > .text-gray-400'
 
 }
 

@@ -1,5 +1,6 @@
 const elementLogin = require('../../support/elements').ELEMENTSLOGIN;
 const element = require('../../support/elements').ELEMENTSPADRAO;
+import '../../support/commands';
 
 class LoginPage {
 
@@ -39,8 +40,10 @@ class LoginPage {
         }
 
     cy.get(elementLogin.senha).type(elementLogin.senhaPadrao)
-    cy.get(elementLogin.buttonEntrar).click()
+    }
 
+    fazerLogin() {
+        cy.get(elementLogin.buttonEntrar).click()
     }
 
     trocarIdioma(idioma) {
@@ -59,19 +62,37 @@ class LoginPage {
                 break;
         }
     }
+
     verificarIdioma(idioma) {
         switch (idioma) {
             case 'PT':
                 cy.contains('Entrar')
                 break;
             case 'EN': 
-            cy.contains('Log in')
-            break;
+                cy.contains('Log in')
+                break;
             case 'FR':
-            cy.contains('Se connecter')
+                cy.contains('Se connecter')
             default:
                 break;
         }
+    }
+
+    linkEsqueceuSenha() {
+        cy.contains(/Esqueceu sua senha?|Forgot your password?|Mot de passe oublié?/).click()
+        cy.location().should((loc) => {
+            expect(loc.href).to.eq(element.baseURL + '/forget-password')
+          })
+    }
+
+    verificaBotaoMostrarSenha() {
+        cy.get(elementLogin.buttonMostrarEsconderPassword).click()
+        cy.get(elementLogin.senha).should('have.attr', 'type', 'text');
+
+    }
+    verificaBotaoEsconderSenha() {
+        cy.get(elementLogin.buttonMostrarEsconderPassword).click()
+        cy.get(elementLogin.senha).should('have.attr', 'type', 'password');
     }
 }
 
