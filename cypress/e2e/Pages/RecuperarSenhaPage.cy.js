@@ -8,6 +8,9 @@ class RecuperarSenhaPage {
         cy.visit(element.baseURL + '/forget-password')
     }
 
+    
+    
+// Importar funções para checar links das redes sociais e troca e verificação de idioma no final.
 
 }
 

@@ -50,24 +50,13 @@ class LoginPage {
     }
 
     validarTrocarIdioma(idioma) {
-    cy.trocarIdioma(idioma);
+    cy.trocarIdioma(idioma)
     }
 
     validarIdioma(idioma) {
-        switch (idioma) {
-            case 'PT':
-                cy.contains('Entrar')
-                break;
-            case 'EN': 
-                cy.contains('Log in')
-                break;
-            case 'FR':
-                cy.contains('Se connecter')
-            default:
-                break;
-        }
+    cy.validarIdioma()
     }
-
+    
     validarLinkEsqueceuSenha() {
         cy.contains(/Esqueceu sua senha?|Forgot your password?|Mot de passe oublié?/).click()
         cy.location().should((loc) => {

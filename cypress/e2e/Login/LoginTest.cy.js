@@ -15,7 +15,7 @@ describe('Cenários da Página de Login', () => {
 
   it('Trocar idioma da página', () => {
     LoginPage.validarTrocarIdioma('PT');
-    LoginPage.validarIdioma('PT');
+    cy.validarIdioma('PT');
   });
 
   it('Clicar em "Esqueceu sua senha?"', () => {
