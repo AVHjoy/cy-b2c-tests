@@ -1,4 +1,4 @@
-import LoginPage from './LoginPage.cy';
+import LoginPage from '../Pages/LoginPage.cy.js';
 
 describe('Fazer login', () => {
   it('Fazer login como influencer', () => {
@@ -7,4 +7,9 @@ describe('Fazer login', () => {
     LoginPage.preencherLogin('InfluencerBR');
     
   })
+  it.only('Trocar idioma da página', () => {
+    LoginPage.acessarLogin();
+    LoginPage.trocarIdioma('PT');
+    LoginPage.verificarIdioma();
+  });
 })

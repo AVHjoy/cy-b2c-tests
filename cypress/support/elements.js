@@ -6,8 +6,12 @@ export const ELEMENTSPADRAO = {
 }
 
 export const ELEMENTSLOGIN = {
+    buttonIdioma: '.w-full > button',
+    optionPt: '.px-1 > .w-full:nth-child(1)',
+    optionEn: '.px-1 > .w-full:nth-child(2)',
+    optionFr: '.px-1 > .w-full:nth-child(3)',
     user: '#user', 
-    password: '#password',
+    senha: '#password',
     senhaPadrao: '123456', 
     buttonEntrar: '.relative > button'
 
