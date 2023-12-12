@@ -49,14 +49,6 @@ class LoginPage {
           })
     }
 
-    validarTrocarIdioma(idioma) {
-    cy.trocarIdioma(idioma)
-    }
-
-    validarIdioma(idioma) {
-    cy.validarIdioma()
-    }
-    
     validarLinkEsqueceuSenha() {
         cy.contains(/Esqueceu sua senha?|Forgot your password?|Mot de passe oublié?/).click()
         cy.location().should((loc) => {

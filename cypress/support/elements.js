@@ -19,5 +19,8 @@ export const ELEMENTSLOGIN = {
 }
 
 export const ELEMENTSRECUPERARSENHA = {
-
+    email: '#input',
+    buttonEnviar: 'button[type="button"] > span',  
+    buttonLogin: 'a > p',
+    pngEmailEnviado: 'img[src="https://b2clubstorage.blob.core.windows.net/shared/email/Email-Sucess.svg"]'
 }
