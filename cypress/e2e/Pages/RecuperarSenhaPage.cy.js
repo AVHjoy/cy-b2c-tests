@@ -10,7 +10,8 @@ class RecuperarSenhaPage {
     }
 
     preencherEmailRecuperacaoSenha(email) {
-        cy.get(elementRecuperarSenha.email).should('be-')
+        cy.get(elementRecuperarSenha.email).should('exist')
+        cy.get(elementRecuperarSenha.email).should('have.value', '')
         cy.get(elementRecuperarSenha.email).type(email)
     }
 
@@ -25,13 +26,11 @@ class RecuperarSenhaPage {
 
     validarFazerLogin() {
         cy.get(elementRecuperarSenha.buttonLogin).click()
-    }
-
-
-    
-
-// Importar funções para checar links das redes sociais e troca e verificação de idioma no arquivo de teste, não no POM.
-
+        cy.location().should((loc) => {
+            expect(loc.href).to.eq(element.baseURL + '/login')
+        }
+    )}
 }
+
 
 export default new RecuperarSenhaPage();

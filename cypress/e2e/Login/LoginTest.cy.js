@@ -13,12 +13,12 @@ describe('Cenários da Página de Login', () => {
     
   })
 
-  it('Trocar idioma da página', () => {
+  it('Trocar idioma da página para Português', () => {
     cy.trocarIdioma('PT')
-    cy.validarIdioma('PT');
+    cy.validarIdioma('PT').should('have.text', 'Português');
   });
 
-  it.only('Clicar em "Esqueceu sua senha?"', () => {
+  it('Clicar em "Esqueceu sua senha?"', () => {
     LoginPage.validarLinkEsqueceuSenha();
   });
 
